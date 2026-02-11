@@ -20,5 +20,7 @@ jobs:
 
       - name: Run tests
         run: go test -v -cover ./...
-      -name: check formatting
-        run:test -z $(go fmt ./...)
+
+      - name: Check formatting
+        run: test -z $(go fmt ./...)
+
