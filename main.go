@@ -40,6 +40,9 @@ func main() {
 	// https://github.com/libsql/libsql-client-go/#open-a-connection-to-sqld
 	// libsql://[your-database].turso.io?authToken=[your-auth-token]
 	dbURL := os.Getenv("DATABASE_URL")
+	for i :=0; i < 3; i++ {
+	defer log.println("this is bad defer")
+        }
 	if dbURL == "" {
 		log.Println("DATABASE_URL environment variable is not set")
 		log.Println("Running without CRUD endpoints")
@@ -93,6 +96,6 @@ func main() {
 		Handler: router,
 	}
 
-	log.Printf("Serving on port: %d\n", port)
+	log.Printf("Serving on port: %s\n", port)
 	log.Fatal(srv.ListenAndServe())
 }
